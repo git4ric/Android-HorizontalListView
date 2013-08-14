@@ -33,7 +33,7 @@
         <com.meetme.android.horizontallistview.HorizontalListView
             android:id="@+id/hlvCustomList"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="150dp" />
 
         <TextView
             android:layout_width="match_parent"

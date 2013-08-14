@@ -50,6 +50,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.Scroller;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -125,7 +126,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
     private View mViewBeingTouched = null;
 
     /** The width of the divider that will be used between list items */
-    private int mDividerWidth = 0;
+    private int mDividerWidth = 50;
 
     /** The drawable that will be used as the list divider */
     private Drawable mDivider = null;
@@ -978,6 +979,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
         requestLayout();
         return true;
     }
+    Context mContext;
 
     protected boolean onDown(MotionEvent e) {
         // If the user just caught a fling, then disable all touch actions until they release their finger
@@ -1006,6 +1008,34 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 
         return true;
     }
+
+    public boolean onSingleTapConfirmed(MotionEvent e) {
+        unpressTouchedChild();
+        OnItemClickListener onItemClickListener = getOnItemClickListener();
+
+        final int index = getChildIndex((int) e.getX(), (int) e.getY());
+
+        // If the tap is inside one of the child views, and we are not blocking touches
+        if (index >= 0 && !mBlockTouchAction) {
+            View child = getChildAt(index);
+            int adapterIndex = mLeftViewAdapterIndex + index;
+            Toast.makeText(getContext(), child.toString(), Toast.LENGTH_SHORT).show();
+            if (onItemClickListener != null) {
+                onItemClickListener.onItemClick(HorizontalListView.this, child, adapterIndex, mAdapter.getItemId(adapterIndex));
+
+                return true;
+            }
+        }
+
+
+
+        if (mOnClickListener != null && !mBlockTouchAction) {
+            mOnClickListener.onClick(HorizontalListView.this);
+        }
+
+        return false;
+    }
+
 
     /** If a view is currently pressed then unpress it */
     private void unpressTouchedChild() {
@@ -1046,27 +1076,28 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
 
         @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {
-            unpressTouchedChild();
-            OnItemClickListener onItemClickListener = getOnItemClickListener();
-
-            final int index = getChildIndex((int) e.getX(), (int) e.getY());
-
-            // If the tap is inside one of the child views, and we are not blocking touches
-            if (index >= 0 && !mBlockTouchAction) {
-                View child = getChildAt(index);
-                int adapterIndex = mLeftViewAdapterIndex + index;
-
-                if (onItemClickListener != null) {
-                    onItemClickListener.onItemClick(HorizontalListView.this, child, adapterIndex, mAdapter.getItemId(adapterIndex));
-                    return true;
-                }
-            }
-
-            if (mOnClickListener != null && !mBlockTouchAction) {
-                mOnClickListener.onClick(HorizontalListView.this);
-            }
-
-            return false;
+            return HorizontalListView.this.onSingleTapConfirmed(e);
+//            unpressTouchedChild();
+//            OnItemClickListener onItemClickListener = getOnItemClickListener();
+//            Toast.makeText(getContext(), mViewBeingTouched.toString(), Toast.LENGTH_SHORT).show();
+//            final int index = getChildIndex((int) e.getX(), (int) e.getY());
+//
+//            // If the tap is inside one of the child views, and we are not blocking touches
+//            if (index >= 0 && !mBlockTouchAction) {
+//                View child = getChildAt(index);
+//                int adapterIndex = mLeftViewAdapterIndex + index;
+//
+//                if (onItemClickListener != null) {
+//                    onItemClickListener.onItemClick(HorizontalListView.this, child, adapterIndex, mAdapter.getItemId(adapterIndex));
+//                    return true;
+//                }
+//            }
+//
+//            if (mOnClickListener != null && !mBlockTouchAction) {
+//                mOnClickListener.onClick(HorizontalListView.this);
+//            }
+//
+//            return false;
         }
 
         @Override
