@@ -1,26 +1,42 @@
 package com.meetme.android.horizontallistview.sample;
 
+import android.annotation.TargetApi;
+import android.app.Fragment;
+import android.os.Build;
+
 /** This is just a simple class for holding data that is used to render our custom view */
-public class CustomData {
-    private int mBackgroundColor;
-    private String mText;
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+public class CustomData extends Fragment{
 
-    public CustomData(int backgroundColor, String text) {
-        mBackgroundColor = backgroundColor;
-        mText = text;
-    }
+    private String bookName;
+    private String bookPrice;
+    private String imgName;
 
-    /**
-     * @return the backgroundColor
-     */
-    public int getBackgroundColor() {
-        return mBackgroundColor;
+    public CustomData(String name, String price,String picName) {
+        bookPrice = price;
+        bookName = name;
+        imgName = picName;
     }
 
     /**
      * @return the text
      */
-    public String getText() {
-        return mText;
+    public String getBookName() {
+        return bookName;
     }
+
+    /**
+     * @return the text
+     */
+    public String getBookPrice() {
+        return bookPrice;
+    }
+
+    /**
+     * @return the text
+     */
+    public String getImgName() {
+        return imgName;
+    }
+
 }

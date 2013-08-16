@@ -126,7 +126,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
     private View mViewBeingTouched = null;
 
     /** The width of the divider that will be used between list items */
-    private int mDividerWidth = 50;
+    private int mDividerWidth = 70;
 
     /** The drawable that will be used as the list divider */
     private Drawable mDivider = null;
@@ -1077,27 +1077,6 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
         @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {
             return HorizontalListView.this.onSingleTapConfirmed(e);
-//            unpressTouchedChild();
-//            OnItemClickListener onItemClickListener = getOnItemClickListener();
-//            Toast.makeText(getContext(), mViewBeingTouched.toString(), Toast.LENGTH_SHORT).show();
-//            final int index = getChildIndex((int) e.getX(), (int) e.getY());
-//
-//            // If the tap is inside one of the child views, and we are not blocking touches
-//            if (index >= 0 && !mBlockTouchAction) {
-//                View child = getChildAt(index);
-//                int adapterIndex = mLeftViewAdapterIndex + index;
-//
-//                if (onItemClickListener != null) {
-//                    onItemClickListener.onItemClick(HorizontalListView.this, child, adapterIndex, mAdapter.getItemId(adapterIndex));
-//                    return true;
-//                }
-//            }
-//
-//            if (mOnClickListener != null && !mBlockTouchAction) {
-//                mOnClickListener.onClick(HorizontalListView.this);
-//            }
-//
-//            return false;
         }
 
         @Override

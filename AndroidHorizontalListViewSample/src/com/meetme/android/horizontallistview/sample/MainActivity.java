@@ -10,52 +10,20 @@ import com.meetme.android.horizontallistview.HorizontalListView;
 
 public class MainActivity extends Activity {
 
-    private HorizontalListView mHlvSimpleList;
+//    private HorizontalListView mHlvSimpleList;
     private HorizontalListView mHlvCustomList;
-    private HorizontalListView mHlvCustomListWithDividerAndFadingEdge;
+//    private HorizontalListView mHlvCustomListWithDividerAndFadingEdge;
 
-    private String[] mSimpleListValues = new String[] { "Android", "iPhone", "WindowsMobile",
-            "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-            "Linux", "OS/2" };
+//    private String[] mSimpleListValues = new String[] { "Android", "iPhone", "WindowsMobile",
+//            "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
+//            "Linux", "OS/2" };
 
     private CustomData[] mCustomData = new CustomData[] {
-            new CustomData(Color.RED, "Red"),
-            new CustomData(Color.DKGRAY, "Dark Gray"),
-            new CustomData(Color.GREEN, "Green"),
-            new CustomData(Color.LTGRAY, "Light Gray"),
-            new CustomData(Color.WHITE, "White"),
-            new CustomData(Color.RED, "Red"),
-            new CustomData(Color.BLACK, "Black"),
-            new CustomData(Color.CYAN, "Cyan"),
-            new CustomData(Color.DKGRAY, "Dark Gray"),
-            new CustomData(Color.GREEN, "Green"),
-            new CustomData(Color.RED, "Red"),
-            new CustomData(Color.LTGRAY, "Light Gray"),
-            new CustomData(Color.WHITE, "White"),
-            new CustomData(Color.BLACK, "Black"),
-            new CustomData(Color.CYAN, "Cyan"),
-            new CustomData(Color.DKGRAY, "Dark Gray"),
-            new CustomData(Color.GREEN, "Green"),
-            new CustomData(Color.LTGRAY, "Light Gray"),
-            new CustomData(Color.RED, "Red"),
-            new CustomData(Color.WHITE, "White"),
-            new CustomData(Color.DKGRAY, "Dark Gray"),
-            new CustomData(Color.GREEN, "Green"),
-            new CustomData(Color.LTGRAY, "Light Gray"),
-            new CustomData(Color.WHITE, "White"),
-            new CustomData(Color.RED, "Red"),
-            new CustomData(Color.BLACK, "Black"),
-            new CustomData(Color.CYAN, "Cyan"),
-            new CustomData(Color.DKGRAY, "Dark Gray"),
-            new CustomData(Color.GREEN, "Green"),
-            new CustomData(Color.LTGRAY, "Light Gray"),
-            new CustomData(Color.RED, "Red"),
-            new CustomData(Color.WHITE, "White"),
-            new CustomData(Color.BLACK, "Black"),
-            new CustomData(Color.CYAN, "Cyan"),
-            new CustomData(Color.DKGRAY, "Dark Gray"),
-            new CustomData(Color.GREEN, "Green"),
-            new CustomData(Color.LTGRAY, "Light Gray")
+            new CustomData("A brief History Of Time","$99","img1"),
+            new CustomData("Maths for Dummies","$199","img2"),
+            new CustomData("Fifty Shades of Grey","$20","img3"),
+            new CustomData("Whoops, that was not supposed to be there","FREE","img4"),
+            new CustomData("Chicken Soup for Naughty souls","$49.99","img5")
     };
 
     @Override
@@ -64,21 +32,21 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         // Get references to UI widgets
-        mHlvSimpleList = (HorizontalListView) findViewById(R.id.hlvSimpleList);
+       // mHlvSimpleList = (HorizontalListView) findViewById(R.id.hlvSimpleList);
         mHlvCustomList = (HorizontalListView) findViewById(R.id.hlvCustomList);
-        mHlvCustomListWithDividerAndFadingEdge = (HorizontalListView) findViewById(R.id.hlvCustomListWithDividerAndFadingEdge);
+       // mHlvCustomListWithDividerAndFadingEdge = (HorizontalListView) findViewById(R.id.hlvCustomListWithDividerAndFadingEdge);
 
-        setupSimpleList();
+        //setupSimpleList();
         setupCustomLists();
     }
 
-    private void setupSimpleList() {
-        // Make an array adapter using the built in android layout to render a list of strings
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text1, mSimpleListValues);
-
-        // Assign adapter to the HorizontalListView
-        mHlvSimpleList.setAdapter(adapter);
-    }
+//    private void setupSimpleList() {
+//        // Make an array adapter using the built in android layout to render a list of strings
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2, android.R.id.text1, mSimpleListValues);
+//
+//        // Assign adapter to the HorizontalListView
+//        mHlvSimpleList.setAdapter(adapter);
+//    }
 
     private void setupCustomLists() {
         // Make an array adapter using the built in android layout to render a list of strings
@@ -86,7 +54,7 @@ public class MainActivity extends Activity {
 
         // Assign adapter to HorizontalListView
         mHlvCustomList.setAdapter(adapter);
-        mHlvCustomListWithDividerAndFadingEdge.setAdapter(adapter);
+       // mHlvCustomListWithDividerAndFadingEdge.setAdapter(adapter);
     }
 
     @Override
